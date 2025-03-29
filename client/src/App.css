@@ -1,0 +1,614 @@
+/* client/src/App.css */
+:root {
+  --primary-color: #1a2e3b;
+  --secondary-color: #f5f5f5;
+  --accent-color: #ebc04a;
+  --text-color: #333;
+  --text-light: #fff;
+  --border-color: #ddd;
+  --success-color: #4CAF50;
+  --error-color: #F44336;
+  --gray-dark: #333;
+  --gray-medium: #666;
+  --gray-light: #999;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f5f5f5;
+  color: var(--text-color);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Header Styles */
+.header {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-light);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 32px;
+  margin-right: 10px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--text-light);
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 5px 0;
+  position: relative;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+}
+
+.theme-toggle {
+  margin-left: 20px;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Match Detail Page Styles */
+.match-detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.match-header {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 15px 20px;
+}
+
+.team-names {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.match-subtitle {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+.score-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.score-summary .team {
+  display: flex;
+  align-items: center;
+}
+
+.score-summary .team img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.score-summary .score {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.match-status {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.tab-navigation {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab-button {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.7;
+  position: relative;
+}
+
+.tab-button.active {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--accent-color);
+}
+
+.tab-content {
+  padding: 20px;
+}
+
+/* Live Score Styles */
+.live-score-container {
+  padding: 15px;
+}
+
+.score-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.team-score {
+  text-align: center;
+}
+
+.team-score h3 {
+  margin-bottom: 5px;
+}
+
+.score {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.current-players {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.current-players h4 {
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+}
+
+.player-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.player-row .name {
+  font-weight: bold;
+}
+
+.player-row .active {
+  position: relative;
+}
+
+.player-row .active::after {
+  content: '*';
+  color: var(--accent-color);
+  margin-left: 5px;
+}
+
+.current-over {
+  margin-top: 20px;
+}
+
+.current-over h4 {
+  margin-bottom: 10px;
+}
+
+.balls {
+  display: flex;
+  gap: 10px;
+}
+
+.ball {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.ball.wicket {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.ball.boundary {
+  background-color: #3f51b5;
+  color:.ball.boundary {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.ball.six {
+  background-color: #9c27b0;
+  color: white;
+}
+
+.ball.dot {
+  background-color: #e0e0e0;
+}
+
+/* Probability Meter Styles */
+.probability-container {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+.probability-container h3 {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 10px;
+}
+
+.view-toggle button {
+  padding: 5px 10px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.view-toggle button.active {
+  background-color: var(--accent-color);
+  color: var(--text-light);
+}
+
+.team-probabilities {
+  margin-top: 15px;
+}
+
+.team-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.team-name {
+  width: 60px;
+  font-weight: bold;
+}
+
+.probability-bar {
+  flex: 1;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 15px;
+}
+
+.probability-fill {
+  height: 100%;
+  border-radius: 10px;
+}
+
+.probability-fill.team1 {
+  background-color: #3f51b5;
+}
+
+.probability-fill.team2 {
+  background-color: #673ab7;
+}
+
+.probability-value {
+  width: 50px;
+  text-align: right;
+  font-weight: bold;
+}
+
+/* Projected Score Styles */
+.projected-score-container {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+.projected-score-container h3 {
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: normal;
+  opacity: 0.7;
+}
+
+.projections-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.projections-table th, 
+.projections-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.projections-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+/* Scorecard Styles */
+.scorecard-container {
+  padding: 15px;
+}
+
+.innings-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.innings-tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.innings-tab.active {
+  font-weight: bold;
+  opacity: 1;
+  border-bottom: 3px solid var(--accent-color);
+}
+
+.batting-table,
+.bowling-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.batting-table th,
+.batting-table td,
+.bowling-table th,
+.bowling-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.batting-table th,
+.bowling-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.batsman-name {
+  font-weight: bold;
+}
+
+.dismissal-info {
+  font-size: 12px;
+  color: var(--gray-medium);
+}
+
+.extras-info,
+.total-info {
+  font-weight: bold;
+}
+
+/* Match Card Styles for Home Page */
+.match-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.match-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.match-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.match-card-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 15px;
+}
+
+.match-card-title {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.match-card-subtitle {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.match-card-content {
+  padding: 15px;
+}
+
+.team-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.team-info:last-child {
+  margin-bottom: 0;
+}
+
+.team-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.team-score-info {
+  flex: 1;
+}
+
+.team-name {
+  font-weight: bold;
+}
+
+.team-score {
+  font-size: 16px;
+  color: var(--gray-medium);
+}
+
+.match-card-footer {
+  padding: 10px 15px;
+  background-color: #f8f8f8;
+  border-top: 1px solid var(--border-color);
+  font-size: 14px;
+  color: var(--gray-medium);
+  display: flex;
+  justify-content: space-between;
+}
+
+.match-status {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .match-cards-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .current-players {
+    grid-template-columns: 1fr;
+  }
+  
+  .score-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .team-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .probability-bar {
+    margin: 5px 0;
+  }
+  
+  .team-name, .probability-value {
+    width: 100%;
+  }
+}
+
+/* Dark Theme Styles */
+.dark-theme {
+  --primary-color: #121212;
+  --secondary-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --border-color: #333;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-theme .match-detail-page,
+.dark-theme .match-card {
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .tab-button,
+.dark-theme .innings-tab {
+  color: #e0e0e0;
+}
+
+.dark-theme .batting-table th,
+.dark-theme .bowling-table th,
+.dark-theme .projections-table th {
+  background-color: #333;
+}
+
+.dark-theme .ball {
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+.dark-theme .match-card-footer,
+.dark-theme .probability-container,
+.dark-theme .projected-score-container {
+  background-color: #252525;
+}
